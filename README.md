@@ -36,7 +36,7 @@
 -   Ability to set video quality up to 4K and 60 FPS
 -   Recording your Screen, Audio and Video
 -   Snapshot the video frame and save it as image png
--   Chat with Emoji Picker & Private messages & Save the conversations
+-   Chat with Emoji Picker to show you feeling, private messages, Markdown support, possibility to Save the conversations, and many more
 -   Speech recognition to send the speeches
 -   Advance collaborative whiteboard for the teachers
 -   Share any YT Embed video, video mp4, webm, ogg and audio mp3 in real-time
@@ -144,12 +144,13 @@ $ npm start
 
 -   Install docker engine: https://docs.docker.com/engine/install/
 -   Install docker compose: https://docs.docker.com/compose/install/
+-   Repository docker hub: https://hub.docker.com/r/mirotalk/p2p
 
 ```bash
 # copy .env.template to .env (edit it according to your needs)
 $ cp .env.template .env
-# build or rebuild services
-$ docker-compose build
+# Get official image from Docker Hub
+$ docker pull mirotalk/p2p:latest
 # create and start containers
 $ docker-compose up # -d
 # to stop and remove resources
@@ -165,7 +166,7 @@ $ docker-compose down
 
 <br/>
 
-You can start videoconferencing directly from your Local PC, and be reachable from any device outside your network, simply by following [these documentation](docs/ngrok.md), or expose it directly on [HTTPS](app/ssl/README.md)
+You can start videoconferencing directly from your Local PC, and be reachable from any device outside your network, simply by reading [these documentation](docs/ngrok.md), or expose it directly on [HTTPS](app/ssl/README.md)
 
 </details>
 
@@ -254,7 +255,7 @@ If you want to deploy a MiroTalk P2P instance on your dedicated server, or for o
 
 <br/>
 
--   [How to Self-Hosting](docs/self-hosting.md)
+To `Self-Host MiroTalk P2P` on `Your` dedicated `Server`, read [this documentation](docs/self-hosting.md).
 
 </details>
 
@@ -297,7 +298,7 @@ If you want to deploy a MiroTalk P2P instance on your dedicated server, or for o
 
 MiroTalk is free and can be modified and forked. But the conditions of the AGPLv3 (GNU Affero General Public License v3.0) need to be respected. In particular modifications need to be free as well and made available to the public. Get a quick overview of the license at [Choose an open source license](https://choosealicense.com/licenses/agpl-3.0/).
 
-For a MiroTalk license under conditions other than AGPLv3, please contact us at info.mirotalk@gmail.com.
+For a MiroTalk license under conditions other than AGPLv3, please contact us at license.mirotalk@gmail.com or [buy directly via CodeCanyon](https://codecanyon.net/item/mirotalk-p2p-webrtc-realtime-video-conferences/38376661).
 
 </details>
 
@@ -313,6 +314,8 @@ Support the project by [becoming a backer or sponsor](https://github.com/sponsor
 [![BroadcastX](public/sponsors/BroadcastX.png)](https://broadcastx.de/)
 
 [![Hetzner](public/sponsors/Hetzner.png)](https://hetzner.cloud/?ref=XdRifCzCK3bn)
+
+[![LuvLounge](public/sponsors/LuvLounge.png)](https://luvlounge.ca)
 
 </details>
 

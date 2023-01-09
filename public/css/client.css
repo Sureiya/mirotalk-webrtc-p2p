@@ -1,37 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Comfortaa:wght@500&display=swap');
 
 /*--------------------------------------------------------------
-# Fade in page on load 
---------------------------------------------------------------*/
-
-@-webkit-keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
-}
-
-@-moz-keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
-}
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
-}
-
-/*--------------------------------------------------------------
 # Root settings
 --------------------------------------------------------------*/
 
@@ -39,7 +8,7 @@
     /* common */
     --navbar-bg: linear-gradient(#363434, #000000);
     --body-bg: radial-gradient(#393939, #000000);
-    --border: 1px solid rgb(255 255 255 / 32%);
+    --border: 0.5px solid rgb(255 255 255 / 32%);
 
     --msger-top: 50%;
     --msger-left: 50%;
@@ -287,6 +256,8 @@ body {
 
 .msger-header-title button,
 .msger-header-options button {
+    padding: 5px;
+    /* border: var(--border); */
     border: none;
     font-size: 1.1rem;
     background: rgb(0, 0, 0);
@@ -331,6 +302,7 @@ body {
 .msg {
     display: flex;
     align-items: flex-end;
+    font-size: 0.8rem;
     margin-bottom: 10px;
 }
 
@@ -477,7 +449,6 @@ button:hover {
 .msger-inputarea * {
     border: none;
     border-radius: 3px;
-    margin: 1px;
     color: #fff;
     font-size: 1rem;
 }
@@ -525,8 +496,9 @@ button:hover {
 
 .msger-input-buttons button {
     padding: 5px;
+    /* border: var(--border); */
     border: none;
-    border-radius: 3px;
+    border-radius: 5px;
     font-size: 1rem;
     color: #fff;
     background: var(--msger-bg);
@@ -537,6 +509,10 @@ button:hover {
     color: var(--hover-color);
     transform: var(--btns-hover-scale);
     transition: all 0.3s ease-in-out;
+}
+
+.msger-input-buttons input {
+    cursor: pointer;
 }
 
 #msgerSendBtn {
@@ -613,15 +589,11 @@ button:hover {
 # Emoji picker
 --------------------------------------------------------------*/
 
-emoji-picker {
+em-emoji-picker {
     z-index: 12;
     position: absolute;
     bottom: 105px;
-    width: 100%;
-    height: 50%;
-    --background: #16171b;
-    --num-columns: 8;
-    --emoji-size: 1.5rem;
+    left: 10px;
 }
 
 /*--------------------------------------------------------------
@@ -664,15 +636,18 @@ emoji-picker {
 }
 
 #mySettings select {
-    font-size: 0.9rem;
+    height: 40px;
     max-width: 305px;
-    height: 30px;
+    font-size: 0.9rem;
     color: #fff;
     background-color: #2b2b2b;
     border-radius: 5px;
+    cursor: pointer;
 }
 
 #mySettingsCloseBtn {
+    padding: 5px;
+    /* border: var(--border); */
     border: none;
     border-radius: 5px;
     font-size: 1.2rem;
@@ -688,21 +663,40 @@ emoji-picker {
 }
 
 #myPeerNameSet {
-    border: 1px solid #fff;
+    width: 165px;
+    padding: 10px;
+    border: var(--border);
+    border-radius: 5px;
     color: #fff;
     background-color: #2b2b2b;
+}
+
+#tabRoomSecurity button,
+#tabRoomParticipants button {
+    width: 100%;
+    margin-bottom: 5px;
 }
 
 #myPeerNameSetBtn,
 #muteEveryoneBtn,
 #hideEveryoneBtn,
+#ejectEveryoneBtn,
 #lockRoomBtn,
-#unlockRoomBtn,
+#unlockRoomBtn {
+    padding: 10px;
+    border: var(--border);
+    font-size: 0.9rem;
+    border-radius: 5px;
+    color: #fff;
+    background-color: transparent;
+}
+
 #speechRecognitionIcon,
 #speechRecognitionStart,
 #speechRecognitionStop {
+    padding: 10px;
+    border: none;
     font-size: 0.9rem;
-    padding: 5px;
     border-radius: 5px;
     color: #fff;
     background-color: transparent;
@@ -719,7 +713,8 @@ emoji-picker {
 }
 
 #muteEveryoneBtn:hover,
-#hideEveryoneBtn:hover {
+#hideEveryoneBtn:hover,
+#ejectEveryoneBtn:hover {
     color: #ff2d00;
     transform: var(--btns-hover-scale);
     transition: all 0.3s ease-in-out;
@@ -728,20 +723,25 @@ emoji-picker {
 /* Style the tab */
 
 .tab {
-    overflow: hidden;
     background-color: rgba(0, 0, 0);
+    padding: 5px;
+    border-radius: 10px;
+    overflow: hidden;
 }
 
 /* Style the buttons inside the tab */
 
 .tab button {
+    margin: 2px;
     font-size: 1rem;
     background-color: inherit;
     float: left;
+    /* border: var(--border); */
     border: none;
+    border-radius: 5px;
     outline: none;
     cursor: pointer;
-    padding: 14px 16px;
+    padding: 12px 14px;
     transition: 0.3s;
     color: #fff;
 }
@@ -775,6 +775,70 @@ emoji-picker {
 }
 
 /*--------------------------------------------------------------
+# Input slider UI
+--------------------------------------------------------------*/
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 41px;
+    height: 19px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: 0.4s;
+    transition: 0.4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: '';
+    height: 17px;
+    width: 17px;
+    left: 0px;
+    bottom: 1px;
+    background-color: white;
+    -webkit-transition: 0.4s;
+    transition: 0.4s;
+}
+
+input:checked + .slider {
+    background-color: green;
+}
+
+input:focus + .slider {
+    box-shadow: 0 0 1px green;
+}
+
+input:checked + .slider:before {
+    -webkit-transform: translateX(24px);
+    -ms-transform: translateX(24px);
+    transform: translateX(24px);
+}
+
+/* Rounded sliders */
+.slider.round {
+    border-radius: 34px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
+
+/*--------------------------------------------------------------
 # Swal2
 --------------------------------------------------------------*/
 
@@ -797,14 +861,61 @@ emoji-picker {
     background-color: transparent !important;
 }
 
-/* .swal2-popup {
-    font-size: 0.8 !important;
-} */
+.swal2-popup {
+    border: var(--border) !important;
+}
 
 .swal2-select {
     background-color: black !important;
     color: white !important;
     border-radius: 6px !important;
+}
+
+.swal2-timer-progress-bar-container {
+    background: #376df9;
+}
+
+/*--------------------------------------------------------------
+# Fade in page on load 
+--------------------------------------------------------------*/
+
+.fadein {
+    -webkit-animation: fadeIn ease-in 1;
+    -moz-animation: fadeIn ease-in 1;
+    animation: fadeIn ease-in 1;
+    -webkit-animation-fill-mode: forwards;
+    -moz-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+    -webkit-animation-duration: 1s;
+    -moz-animation-duration: 1s;
+    animation-duration: 1s;
+}
+
+@-webkit-keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@-moz-keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
 
 /*--------------------------------------------------------------
@@ -1026,6 +1137,10 @@ progress {
     /*box-shadow: var(--box-shadow);*/
 }
 
+.speaking {
+    box-shadow: 0 0 1px 1px rgb(255 255 255 / 32%); /* lightblue */
+}
+
 /*--------------------------------------------------------------
 # speech recognition languages
 --------------------------------------------------------------*/
@@ -1057,6 +1172,15 @@ progress {
 /*--------------------------------------------------------------
 # Common
 --------------------------------------------------------------*/
+
+hr {
+    border: 0;
+    display: block;
+    height: 1px;
+    background: #dbdbdb;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
 
 button {
     cursor: pointer;
@@ -1114,7 +1238,7 @@ button {
     border-radius: 50px;
     overflow: hidden;
     outline: none;
-    border: none;
+    border: var(--border);
     cursor: pointer;
     background-color: #000000;
     transition: background-color ease 0.3s;
@@ -1126,7 +1250,7 @@ button {
     position: absolute;
     z-index: 2;
     width: 20px;
-    height: 20px;
+    height: 18px;
     background: #fff;
     left: 2px;
     top: 2px;
@@ -1144,7 +1268,7 @@ button {
 }
 
 .toggle:checked {
-    background-color: #4cd964;
+    background-color: green;
 }
 
 .toggle:checked:before {
